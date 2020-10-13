@@ -76,7 +76,7 @@ export default {
     //接收图片加载完，重新计算滑动高度
     this.$bus.$on("itemLoadImg", () => {
       this.$refs.scroll && this.$refs.scroll.refresh()
-      console.log('------');
+      console.log('滑动');
     })
   },
   computed: {
