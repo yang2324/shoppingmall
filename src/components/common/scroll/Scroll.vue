@@ -34,25 +34,33 @@ export default {
       pullUpLoad: this.pullUpLoad
     })
     //2.获取滑动的位置
-    this.scroll.on('scroll', (position) => {
-      //console.log(position);
-      this.$emit("scroll", position)
-    })
+    if (this.probeType === 2 || this.probeType === 3) {
+      this.scroll.on('scroll', (position) => {
+        this.$emit("scroll", position)
+      })
+    }
+
     //3.监听上拉事件滑动底部加载更多
-    this.scroll.on("pullingUp", () => {
-      // console.log('加载更多'); //传出数据
-      this.$emit("pullingUp")
-    })
+    if (this.pullUpLoad) {
+      this.scroll.on("pullingUp", () => {
+        //传出数据
+        this.$emit("pullingUp")
+      })
+    }
+
   },
   methods: {
     scrollTo(x, y, time = 500) {
       this.scroll && this.scroll.scrollTo(x, y, time)
     },
-    finishPullUp(){
+    finishPullUp() {
       this.scroll.finishPullUp()
     },
-    refresh(){
+    refresh() {
       this.scroll && this.scroll.refresh()
+    },
+    getScrollY() {
+      return this.scroll ? this.scroll.scrollY : 0
     }
   }
 }

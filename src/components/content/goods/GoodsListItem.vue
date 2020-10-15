@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item">
+  <div class="goods-item" @click="detailClick">
     <img :src="goodsItem.show.img" @load="loadImgMore">
     <div class="info">
       <p>{{ goodsItem.title }}</p>
@@ -20,10 +20,14 @@ export default {
       }
     }
   },
-  methods:{
+  methods: {
     //监听图片加载
-    loadImgMore(){
+    loadImgMore() {
       this.$bus.$emit("itemLoadImg")
+    },
+    //点击跳转到对应的详情页
+    detailClick() {
+      this.$router.push("/detail/" + this.goodsItem.iid)
     }
   }
 }
@@ -56,9 +60,11 @@ export default {
   color: var(--color-high-text);
   margin-right: 20px;
 }
-.info .collect{
+
+.info .collect {
   position: relative;
 }
+
 .info .collect::before {
   content: "";
   position: absolute;
