@@ -19,15 +19,26 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      isLoad: false
+    };
+  },
   components: {
     Swiper,
     SwiperItem
   },
   methods: {
     //监听图片加载
+    // loadImgMore() {
+    //   this.$bus.$emit("topImages")
+    // },
     loadImgMore() {
-      this.$bus.$emit("itemLoadImg")
-    },
+      if (!this.isLoad) {
+        this.$emit("topImages")
+        this.isLoad = true
+      }
+    }
   }
 }
 </script>
