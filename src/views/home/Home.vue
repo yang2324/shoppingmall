@@ -43,7 +43,7 @@ import Scroll from "components/common/scroll/Scroll";
 import BackTop from "components/content/backTop/BackTop";
 
 import {getHomeMultidata, getHomeGoods} from "network/home";
-import {itemImgListener} from "common/mixin"
+import {itemImgListener,listenerBackTop} from "common/mixin"
 
 export default {
   name: "home",
@@ -57,7 +57,7 @@ export default {
     Scroll,
     BackTop
   },
-  mixins: [itemImgListener],
+  mixins: [itemImgListener,listenerBackTop],
   data() {
     return {
       banners: [],
@@ -68,7 +68,6 @@ export default {
         'sell': {page: 0, list: []},
       },
       currentType: "pop",
-      isBackTopShow: false,
       tabOffsetTop: 0,
       isTabFixed: false,
       saveY: 0
@@ -117,15 +116,10 @@ export default {
       this.$refs.tabControl1.currentIndex = index
       this.$refs.tabControl2.currentIndex = index
     },
-    //点击返回顶部
-    backClick() {
-      //this.$refs.scroll.scroll.scrollTo(0,0,500)
-      this.$refs.scroll.scrollTo(0, 0)
-    },
     //滑动到一定距离显示隐藏置顶按钮
     contentScroll(position) {
       //1. 是否显示backTop
-      this.isBackTopShow = (-position.y) > 1000
+      this.listenerBackTopShow(position)
       //2. tabControl是否吸顶
       this.isTabFixed = (-position.y) > this.tabOffsetTop
     },

@@ -1,8 +1,10 @@
+//混入
 import {debounce} from "common/utils"
 
+//监听图片加载
 export const itemImgListener = {
-  data(){
-    return{
+  data() {
+    return {
       itemImgListener: null
     }
   },
@@ -16,5 +18,23 @@ export const itemImgListener = {
     this.$bus.$on("itemLoadImg", this.itemImgListener)
 
     //console.log("我是混入");
+  }
+}
+//返回顶部按钮功能
+export const listenerBackTop = {
+  data() {
+    return {
+      isBackTopShow: false
+    }
+  },
+  methods: {
+    //点击返回顶部
+    backClick() {
+      this.$refs.scroll.scrollTo(0, 0)
+    },
+    //是否显示backTop
+    listenerBackTopShow(position) {
+      this.isBackTopShow = (-position.y) > 1000
+    }
   }
 }
