@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 export function request(config) {
   //1.创建axios 实列
   const instance = axios.create({
@@ -11,6 +12,7 @@ export function request(config) {
   //拦截器
   //请求拦截的作用
   instance.interceptors.request.use(config => {
+
     return config
   }, err => {
     //console.log(err);

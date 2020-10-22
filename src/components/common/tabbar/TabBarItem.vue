@@ -6,7 +6,7 @@
     <div v-else>
       <slot name="item-icon-active"></slot>
     </div>
-    <div :style="activeStyle">
+    <div :style="activeStyle" class="text">
       <slot name="item-text"></slot>
     </div>
 
@@ -59,5 +59,8 @@ export default {
   height: 24px;
   margin-top: 3px;
   vertical-align: middle;
+}
+.tab-bar-item .text{
+  margin-top: 4px;
 }
 </style>

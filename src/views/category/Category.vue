@@ -3,8 +3,13 @@
 </template>
 
 <script>
+import SlideBar from "./childComps/SlideBar";
+
 export default {
-  name: "category"
+  name: "category",
+  components: {
+    SlideBar
+  }
 }
 </script>
 

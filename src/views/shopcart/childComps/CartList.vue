@@ -13,7 +13,7 @@
 import Scroll from "components/common/scroll/Scroll";
 import CartListItem from "./CartListItem";
 
-import {mapGetters} from "vuex"
+import {mapGetters,mapMutations} from "vuex"
 
 export default {
   name: "CartList",
