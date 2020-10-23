@@ -22,7 +22,7 @@ export default {
   },
   computed:{
     isShowImg(){
-      return this.goodsItem.image || this.goodsItem.show.img
+      return this.goodsItem.img || this.goodsItem.image || this.goodsItem.show.img
     }
   },
   methods: {

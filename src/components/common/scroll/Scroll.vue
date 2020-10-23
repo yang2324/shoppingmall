@@ -14,11 +14,15 @@ export default {
   props: {
     probeType: {
       type: Number,
-      default: 0
+      default(){
+        return 0
+      }
     },
     pullUpLoad: {
       type: Boolean,
-      default: false
+      default(){
+        return false
+      }
     }
   },
   data() {
@@ -54,10 +58,10 @@ export default {
       this.scroll && this.scroll.scrollTo(x, y, time)
     },
     finishPullUp() {
-      this.scroll.finishPullUp()
+      this.scroll && this.scroll.finishPullUp()
     },
     refresh() {
-      this.scroll && this.scroll.refresh()
+      this.scroll && this.scroll && this.scroll.refresh()
     },
     getScrollY() {
       return this.scroll ? this.scroll.scrollY : 0

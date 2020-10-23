@@ -27,6 +27,10 @@ export default {
       default() {
         return false;
       }
+    },
+    goodsHeight: {
+      type: Boolean,
+      default: true
     }
   }
 }
@@ -38,6 +42,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
 .goods-list-box .recommend {
   font-size: 15px;
   margin-top: 10px;
